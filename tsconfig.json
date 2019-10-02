@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "outDir": "build",
+        "target": "esnext",
+        "module": "esnext",
+        "lib": [
+            "dom",
+            "es5",
+            "es6",
+            "es7",
+            "esnext"
+        ]
+    },
+    "include": [
+        "src"
+    ]
+}

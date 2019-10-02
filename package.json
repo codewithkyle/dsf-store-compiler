@@ -1,0 +1,33 @@
+{
+  "name": "dsf-store-compiler",
+  "version": "0.1.0",
+  "description": "Used to compile the config SASS file into the main.css required for DSF webstores",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codewithkyle/dsf-store-compiler.git"
+  },
+  "author": "Kyle Andrews",
+  "license": "MIT",
+  "scripts": {
+    "cleanup": "node ./cleanup.config.js",
+    "compile": "npm run cleanup && npm-run-all compile:*",
+    "compile:typescript": "tsc",
+    "compile:custom": "node ./compiler.config.js",
+    "launch": "electron ./build/application.js",
+    "build": "npm run compile && npm run launch"
+  },
+  "bugs": {
+    "url": "https://github.com/codewithkyle/dsf-store-compiler/issues"
+  },
+  "homepage": "https://github.com/codewithkyle/dsf-store-compiler#readme",
+  "devDependencies": {
+    "electron": "^6.0.11",
+    "glob": "^7.1.4",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "node-sass": "^4.12.0"
+  }
+}
