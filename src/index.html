@@ -3,10 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DSF Webstore Compiler</title>
+    <title>DSF Webstore Configurator</title>
     <meta http-equiv="Content-Security-Policy" content="script-src 'self';" />
+
+    <style>
+        :root
+        {
+            --font: #545f66;
+
+            --white: #ffffff;
+            --off-white: #f6f8f9;
+            --grey-1: #f7f8f9;
+            --grey-2: #e9ecee;
+            --grey-3: #879099;
+            --cool-grey: #f6f9fc;
+
+            --primary: #4a99ff;
+            --primary-hover: hsl(214, 100%, 70%);
+            --primary-active: hsl(214, 100%, 60%);
+            --primary-hover-opacity: rgba(74, 153, 255, 0.05);
+            --primary-active-opacity: rgba(74, 153, 255, 0.1);
+
+            font-size: 100%;
+        }
+
+        html
+        {
+            font-size: 1rem;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--font);
+        }
+
+        *:focus
+        {
+            box-shadow: none;
+            outline: none;
+        }
+
+        body
+        {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: block;
+            background-color: var(--cool-grey);
+        }
+    </style>
+
+    <link rel="stylesheet" href="stylesheets/layout.css" />
 </head>
 <body>
-    Hello world!
+    <header>
+        <button>
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="play" class="svg-inline--fa fa-play fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path></svg>
+            Run
+        </button>
+    </header>
 </body>
 </html>
