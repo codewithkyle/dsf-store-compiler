@@ -18,6 +18,12 @@ class StateManager
         };
     }
 
+    private notify() : void
+    {
+        const notice = new CustomEvent('state-change', { detail: { status: this.state.compilerStatus } });
+        self.dispatchEvent(notice);
+    }
+
     public updateSourceCode(newSourceCode:string) : void
     {
         if (this.state.compilerStatus === 'running')
@@ -47,11 +53,12 @@ class StateManager
         {
             const response = await request.blob();
             const fileUrl = URL.createObjectURL(response);
-            const download = document.createElement('a');
-            download.href = fileUrl;
-            download.download = 'main.css';
-            download.click();
-            URL.revokeObjectURL(fileUrl);
+            const compilerButtonComponent:CompilerButtonComponent|null = document.body.querySelector('compiler-button-component');
+            if (compilerButtonComponent)
+            {
+                compilerButtonComponent.addLink(fileUrl);
+            }
+
             return;
         }
 
@@ -76,30 +83,33 @@ class StateManager
         updatedState.compilerStatus = 'running';
         this.updateState(updatedState);
         
-        compiler.run(this.state.sourceCode)
-        .then(timestamp => {
-            this.generateDownloadLink(timestamp)
-            .then(() => {
-                const updatedState = { ...this.state };
-                updatedState.compilerStatus = 'completed';
-                this.updateState(updatedState);
+        setTimeout(() => {
+            compiler.run(this.state.sourceCode)
+            .then(timestamp => {
+                this.generateDownloadLink(timestamp)
+                .then(() => {
+                    const updatedState = { ...this.state };
+                    updatedState.compilerStatus = 'completed';
+                    this.updateState(updatedState);
+                })
+                .catch(error => {
+                    throw error;
+                });
             })
             .catch(error => {
-                throw error;
+                console.error(error);
+                const updatedState = { ...this.state };
+                updatedState.compilerStatus = 'failed';
+                this.updateState(updatedState);
             });
-        })
-        .catch(error => {
-            console.error(error);
-            const updatedState = { ...this.state };
-            updatedState.compilerStatus = 'failed';
-            this.updateState(updatedState);
-        });
+        }, 300);
     }
 
     private updateState(newState:ApplicationState) : void
     {
         document.documentElement.setAttribute('state', newState.compilerStatus);
         this.state = newState;
+        this.notify();
     }
 }
 

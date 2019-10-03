@@ -1,5 +1,6 @@
 compiler-button-component
 {
+    outline: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -45,18 +46,92 @@ compiler-button-component
 
     html[state=running] & 
     {
+        background-color: var(--grey-2);
+        color: var(--grey-3);
         cursor: wait;
+
+        svg
+        {
+            &[tag=ready],
+            &[tag=failed],
+            &[tag=completed]
+            {
+                display: none;
+            }
+
+            &[tag=running]
+            {
+                display: inline-block;
+                animation: spinWhileRunning 1600ms cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+            }
+        }
     }
 
-    // html[state=completed] &
-    // {
-    //     cursor: wait;
-    // }
+    html[state=failed] & 
+    {
+        background-color: var(--danger);
+        color: var(--white);
+
+        svg
+        {
+            &[tag=ready],
+            &[tag=running],
+            &[tag=completed]
+            {
+                display: none;
+            }
+
+            &[tag=failed]
+            {
+                display: inline-block;
+            }
+        }
+    }
+
+    html[state=completed] &
+    {
+        background-color: var(--success);
+        color: var(--white);
+
+        svg
+        {
+            &[tag=ready],
+            &[tag=running],
+            &[tag=failed]
+            {
+                display: none;
+            }
+
+            &[tag=completed]
+            {
+                display: inline-block;
+            }
+        }
+    }
 
     svg
     {
         width: 12px;
         height: 12px;
         margin-right: 0.75rem;
+
+        &[tag=running],
+        &[tag=failed],
+        &[tag=completed]
+        {
+            display: none;
+        }
+    }
+}
+
+@keyframes spinWhileRunning
+{
+    0%
+    {
+        transform: rotate(0deg);
+    }
+    66%, 100%
+    {
+        transform: rotate(360deg);
     }
 }

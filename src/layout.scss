@@ -35,5 +35,19 @@ main
         color: rgba(84, 95, 102, 0.6);
         overflow: auto;
         white-space: pre;
+        transition: all 75ms ease-in-out;
+
+        &:focus
+        {
+            color: var(--font);
+        }
+    }
+}
+
+html[state=running]
+{
+    *
+    {
+        cursor: wait !important;
     }
 }

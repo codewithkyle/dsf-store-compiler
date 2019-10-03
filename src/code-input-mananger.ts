@@ -22,6 +22,11 @@ class CodeInputManager
             return;
         }
 
+        if (stateManager.state.compilerStatus === 'running')
+        {
+            this._input.blur();
+        }
+
         if (this._input.value === CodeInputManager.emptyTextareaMessage)
         {
             this._input.value = '';

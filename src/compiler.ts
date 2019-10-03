@@ -46,19 +46,26 @@ class Compiler
                         reject(`${ error.message } at line ${ error.line } ${ error.file }`);
                     }
 
-                    if (result === null)
+                    if (result === null || result.css === null)
                     {
                         reject(`Failed to render`);
                     }
 
-                    fs.writeFile(destPath, result.css.toString(), (error) => {
-                        if (error)
-                        {
-                            reject(error);
-                        }
-
-                        resolve();
-                    });
+                    try
+                    {
+                        fs.writeFile(destPath, result.css.toString(), (error) => {
+                            if (error)
+                            {
+                                reject(error);
+                            }
+    
+                            resolve();
+                        });
+                    }
+                    catch (error)
+                    {
+                        reject(error);
+                    }
                 }
             );
         });
