@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow } = require('electron');
 
 let win = null;
 
@@ -17,6 +17,7 @@ function createWindow()
     }
   });
 
+  win.webContents.openDevTools();
   win.loadFile('index.html');
 }
 

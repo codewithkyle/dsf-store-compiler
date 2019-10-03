@@ -3,6 +3,11 @@
         "outDir": "build",
         "target": "esnext",
         "module": "esnext",
+        "strictNullChecks": true,
+        "strictBindCallApply": true,
+        "strictFunctionTypes": true,
+        "allowJs": true,
+        "checkJs": false,
         "lib": [
             "dom",
             "es5",
