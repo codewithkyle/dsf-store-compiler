@@ -1,0 +1,95 @@
+// =================================================
+// DSF Boilerplate 3 Config
+// =================================================
+// General Site Settings
+// =================================================
+//colors
+$primary-color:            #be9b3d; //The main color used for buttons, highlights, and more (can be hex, rgb(a), hsl)
+$primary-color-hover:        darken($primary-color, 5); //The main color used for (some) hover states and highlights (can be hex, rgb(a), hsl, darken(var, %) & lighten(var, %))
+$primary-color-button-hover: $primary-color-hover; //The main color used for (some) button hover states (can be hex, rgb(a), hsl, darken(var, %) & lighten(var, %))
+//Login Settings
+$force-login:                true; //Prevent the user from closing the login box, be sure to enable the popup in the javascript element
+$login-popup-background:   #eff1f3; //Can be hex, rgb, hsl
+//Page Loading Animation (svg)
+$loading-svg: 'https://www.page.works/uploads/misc/Boilerplate-3-Webstore/loading.svg'; //Default, shouldn't be changed
+// Header
+// =================================================
+//Settings
+$header-max-width:            1225px;  //Default uses 1225px (body max)
+//colors
+$header-top-bar-background:        #505050;   //The background color for the headers top bar (hex, rgb(a), hsl)
+$header-botom-bar-background:      #fff;      //The background color for the headers bottom bar (hex, rgb(a), hsl)
+$header-top-bar-font-color:        #fff;      //The headers top bar font color (hex, rgb, hsl)
+$header-top-bar-link-hover-color:  #be9b3d;   //The headers top bar link hover color, (hex, rgb, hsl)
+$header-bottom-bar-font-color:     #000;      //The headers bottom bar font color (hex, rgb, hsl)
+//Top Bar Settings
+$header-show-top-bar:          true;   //Set to true or false
+$header-show-help:             false;  //Set to true or false
+$header-show-contact:          true;   //Set to true or false
+$header-padding-top-bar:       8px;    //Padding is used for the top and bottom values of the top (primary) header bar
+$header-padding-secondary-bar: 16px;   //Padding is used for the top and bottom values of the top (primary) header bar
+// Homepage Hero
+// =================================================
+//Hero Image
+$homepage-hero-url:        "https://www.page.works/uploads/misc/howardmillerbanner.jpg";  //Requires a URL or null, if null ignore the other hero image settings
+$homepage-hero-min-height: 450px;    //Ignore unless specific size desired
+$homepage-hero-position:   50% 200%; //Adjust X and Y offsets (can be % or px)
+$homepage-hero-fixed:      false;
+$homepage-hero-size:       cover;    //Should the image stretch the image? (can be cover or contain)
+//Copy Settings
+$hero-copy-padding-bottom: 15px; //Used to push the copy up
+//H1 (Company Title)
+$hero-primary-copy-enable:          true; //Used to hide text (true or false)
+$hero-primary-copy-text:            "HMC Retail POP and Print Store";
+$hero-primary-copy-size:            54px;
+$hero-primary-copy-line-height:     70px;
+$hero-primary-copy-color:         #fff;
+$hero-primary-copy-shadow-color:  rgba(0,0,0,0.25); //Should be in rgba format
+//H2 (Subittle)
+$hero-secondary-copy-enable:          true; //Used to hide text (true or false)
+$hero-secondary-copy-text:            "Optional Subtitle Line";
+$hero-secondary-copy-size:            24px;
+$hero-secondary-copy-color:         #dbdbdb;
+$hero-secondary-copy-shadow-color:  rgba(0,0,0,0.25); //Should be in rgba format
+// Body
+// =================================================
+//color
+$body-background:        #fff;    //Can use hex, rgb, hsl, url('http://example.com/image.png');
+$homepage-copy-color:    #505050; //Can use hex, rgb, hsl, url('http://example.com/image.png');
+$homepage-heading-color: #be9b3d; //Can use hex, rgb, hsl, url('http://example.com/image.png');
+//Settings
+$center-featured-categories: true; //Can be true or false
+$center-featured-products:   true; //Can be true or false
+$body-padding:               60px; //Padding is used for the top and bottom values
+$body-border-bottom-enable:  true; //Used to display dividing line between copy and content (true or false)
+$body-border-bottom:         2px solid #f1f1f1; //Adjust line thickness and color (use hex, rgb(a), hsl)
+$body-min-height:            50vh; //Used to prevent the footer from being above the page fold (use vh value only)
+// Footer Settings
+// =================================================
+//colors
+$footer-link-color:      #fff;    //The base color for the footer links (hex, rgb, hsl)
+$footer-link-hover:      #be9b3d; //The :HOVER color for the footer links (hex, rgb, hsl)
+$footer-text-color:      #fff;    //Color of the basic footer text (hex, rgb, hsl)
+$footer-primary-color:   #686868; //Color of the footers top bar (hex, rgb, hsl)
+$footer-secondary-color: #505050; //Color of the footers bottom bar (hex, rgb, hsl)
+//Settings
+$footer-padding:   60px; //Padding is used for the top and bottom values of the top (primary) footer bar
+$footer-font-size: 14px;
+// Primary (top) Footer Sections
+// =================================================
+//Content is shifted dynamically based on how many sections (below) are enabled (true)
+$show-company-info:     true; //Can be true or false
+$show-resources:        true; //Can be true or false
+$show-copy:             false;//Can be true or false
+//Position adjustment, lowest number will be farthest left
+$company-info-position: 1;    //Can be any number > 1
+$resources-position:    2;    //Can be any number > 1
+$copy-position:         3;    //Can be any number > 1
+$center-sections:       true; //This is used to center the 3 primary blocks (true or false)
+$center-sub-sections:   true; //This is used to center the text blocks within their blocks (true or false)
+// Secondary (bottom) Footer Settings
+// =================================================
+//Payment Types
+$show-discover:   false; //Can be true or false
+$show-mastercard: false; //Can be true or false
+$show-visa:       false; //Can be true or false

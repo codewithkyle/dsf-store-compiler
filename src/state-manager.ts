@@ -101,6 +101,7 @@ class StateManager
                 const updatedState = { ...this.state };
                 updatedState.compilerStatus = 'failed';
                 this.updateState(updatedState);
+                alert(error);
             });
         }, 300);
     }
