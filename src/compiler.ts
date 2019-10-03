@@ -32,8 +32,8 @@ class Compiler
     private renderCss(timestamp:number)
     {
         return new Promise((resolve, reject) => {
-            const pathToMain = `build/temp/${ timestamp }/main.scss`;
-            const destPath = `build/temp/${ timestamp }/main.css`;
+            const pathToMain = `${ __dirname }/temp/${ timestamp }/main.scss`;
+            const destPath = `${ __dirname }/temp/${ timestamp }/main.css`;
 
             sass.render(
                 {
@@ -74,7 +74,7 @@ class Compiler
     private createSourceCodeFile(timestamp:number, sourceCode:string)
     {
         return new Promise((resolve, reject) => {
-            fs.writeFile(`build/temp/${ timestamp }/_config.scss`, sourceCode, (error) => {
+            fs.writeFile(`${ __dirname }/temp/${ timestamp }/_config.scss`, sourceCode, (error) => {
                 if (error)
                 {
                     reject(error);
@@ -88,19 +88,19 @@ class Compiler
     private cloneBaseCode(timestamp:number)
     {
         return new Promise((resolve, reject) => {
-            fs.copyFile('base/main.scss', `build/temp/${ timestamp }/main.scss`, (error) => {
+            fs.copyFile(__dirname + '/../base/main.scss', `${ __dirname }/temp/${ timestamp }/main.scss`, (error) => {
                 if (error)
                 {
                     reject(error);
                 }
 
-                fs.copyFile('base/_base.scss', `build/temp/${ timestamp }/_base.scss`, (error) => {
+                fs.copyFile(__dirname + '/../base/_base.scss', `${ __dirname }/temp/${ timestamp }/_base.scss`, (error) => {
                     if (error)
                     {
                         reject(error);
                     }
 
-                    fs.copyFile('base/_content.scss', `build/temp/${ timestamp }/_content.scss`, (error) => {
+                    fs.copyFile(__dirname + '/../base/_content.scss', `${ __dirname }/temp/${ timestamp }/_content.scss`, (error) => {
                         if (error)
                         {
                             reject(error);
@@ -116,9 +116,9 @@ class Compiler
     private cleanup(timestamp:number)
     {
         return new Promise((resolve, reject) => {
-            fs.promises.access('build/temp')
+            fs.promises.access(`${ __dirname }/temp`)
             .then(() => {
-                glob('build/temp/*/', (error, directories) => {
+                glob(`${ __dirname }/temp/*/`, (error, directories) => {
                     if (error)
                     {
                         reject(error);
@@ -135,7 +135,7 @@ class Compiler
                             {
                                 if (directoryPath !== timestamp.toString())
                                 {
-                                    rimraf(`build/temp/${ directoryPath }`, (error) => {
+                                    rimraf(`${ __dirname }/temp/${ directoryPath }`, (error) => {
                                         if (error)
                                         {
                                             reject(error);
@@ -180,12 +180,10 @@ class Compiler
     private makeDirectory(timestamp:number)
     {
         return new Promise((resolve, reject) => {
-            fs.mkdir(`build/temp/${ timestamp }`, { recursive: true }, (error) => {
-                if (error)
-                {
+            fs.mkdir(`${ __dirname }/temp/${timestamp}`, { recursive: true }, (error) => {
+                if (error) {
                     reject(error);
                 }
-
                 resolve();
             });
         });

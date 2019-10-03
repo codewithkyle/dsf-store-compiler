@@ -1,5 +1,6 @@
 {
   "name": "dsf-store-compiler",
+  "productName": "DSF Store Configurator",
   "version": "0.1.0",
   "description": "Used to compile the config SASS file into the main.css required for DSF webstores",
   "main": "index.js",
@@ -14,8 +15,9 @@
     "compile": "npm run cleanup && npm-run-all compile:*",
     "compile:typescript": "tsc",
     "compile:custom": "node ./compiler.config.js",
-    "launch": "electron ./build/application.js",
-    "build": "npm run compile && npm run launch"
+    "launch": "electron ./index.js",
+    "build": "npm run compile && npm run launch",
+    "publish": "electron-packager ."
   },
   "bugs": {
     "url": "https://github.com/codewithkyle/dsf-store-compiler/issues"
@@ -24,12 +26,15 @@
   "devDependencies": {
     "electron": "^6.0.11",
     "electron-builder": "^21.2.0",
+    "electron-packager": "^14.0.6",
     "electron-rebuild": "^1.8.6",
-    "glob": "^7.1.4",
-    "node-sass": "^4.12.0",
     "npm-run-all": "^4.1.5",
-    "rimraf": "^3.0.0",
     "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "rimraf": "^3.0.0",
+    "glob": "^7.1.4",
+    "node-sass": "^4.12.0"
   },
   "build": {
     "buildDependenciesFromSource": "true",
