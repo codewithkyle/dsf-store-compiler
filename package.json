@@ -34,7 +34,7 @@
   "dependencies": {
     "rimraf": "^3.0.0",
     "glob": "^7.1.4",
-    "node-sass": "^4.12.0"
+    "node-sass": "^4.13.1"
   },
   "build": {
     "buildDependenciesFromSource": "true",
